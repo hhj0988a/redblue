@@ -1,3 +1,4 @@
+package com.example.demo.checkWords;
 
 import java.util.HashMap;
 
