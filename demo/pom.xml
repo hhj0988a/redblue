@@ -37,6 +37,12 @@
     		<groupId>org.springframework.boot</groupId>
     		<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+	    <dependency>
+	        <groupId>org.projectlombok</groupId>
+	        <artifactId>lombok</artifactId>
+	        <version>1.18.22</version>
+	        <scope>provided</scope>
+	    </dependency>
 		<dependency>
     		<groupId>org.json</groupId>
     		<artifactId>json</artifactId>
@@ -45,8 +51,27 @@
   		<dependency>
       		<groupId>org.springframework</groupId>
       		<artifactId>spring-jdbc</artifactId>
-      		<version>5.3.24</version>
+      		<version>6.1.0</version>
   		</dependency>
+		<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>6.1.0</version>
+        </dependency>
+		<dependency>
+		    <groupId>org.apache.httpcomponents</groupId>
+		    <artifactId>httpcore</artifactId>
+		    <version>4.4.15</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.httpcomponents</groupId>
+		    <artifactId>httpclient</artifactId>
+		    <version>4.5.13</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webflux</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
