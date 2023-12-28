@@ -1,1 +1,7 @@
-
+spring:
+    datasource:
+        hikari:
+            driver-class-name: com.mysql.cj.jdbc.Driver
+            jdbc-url: jdbc:mysql://localhost:3306/{Data}?rewriteBatchedStatements=true&profileSQL=true&logger=Slf4JLogger&maxQuerySizeToLog=200
+            username: root
+            password: 1234

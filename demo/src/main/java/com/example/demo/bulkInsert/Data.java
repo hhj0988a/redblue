@@ -22,7 +22,10 @@ public class Data {
     
     public Data(JSONObject data) {
       this.data = data;
-  }
+    }
+    public JSONObject getData(){
+      return this.data;
+    }
 }
 
 

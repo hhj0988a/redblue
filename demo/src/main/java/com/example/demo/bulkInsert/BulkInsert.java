@@ -1,10 +1,13 @@
 package com.example.demo.bulkInsert;
 
+import java.sql.PreparedStatement;
 import java.util.*;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +16,7 @@ public class BulkInsert {
     @Autowired
     DataRepository dataRepository;  
     List<Data> data = new ArrayList<Data>();
+    private JdbcTemplate jdbcTemplate;
 
     @PostMapping("/insertData")
     public ResponseEntity<String> insertData(JSONObject json) {
@@ -23,9 +27,22 @@ public class BulkInsert {
         }
         else{
             data.add(newData);
-            dataRepository.saveAll(data);
+            saveAll(data);
             return ResponseEntity.ok("bulk saved");
         }        
+    }
+
+    @Transactional
+    public void saveAll(List<Data> dataList){
+        String sql = "INSERT INTO data_table (data)"+
+                "VALUES (?)";
+
+        jdbcTemplate.batchUpdate(sql,
+                dataList,
+                dataList.size(),
+                (PreparedStatement ps, Data data) -> {
+                    ps.setString(1, data.getData().toString());
+                });
     }
 
 }
